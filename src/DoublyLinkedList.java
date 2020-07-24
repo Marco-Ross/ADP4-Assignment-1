@@ -1,3 +1,5 @@
+import java.util.concurrent.TimeUnit;
+
 public class DoublyLinkedList {
 
     private static class Node {
@@ -33,17 +35,13 @@ public class DoublyLinkedList {
     }
 
     public boolean compareWithReverse(DoublyLinkedList compareNode) {
-        int compareCounter = 0;
+        if (compareNode.size != size)
+            return false;
 
         while (compareNode.tail != null && head != null && compareNode.tail.value == head.value) {
             compareNode.tail = compareNode.tail.prev;
             head = head.next;
-
-            compareCounter++;
         }
-
-        if (compareCounter != compareNode.size)
-            return false;
 
         return true;
     }
@@ -51,26 +49,25 @@ public class DoublyLinkedList {
     public static void main(String[] args) {
         DoublyLinkedList list = new DoublyLinkedList();
 
-        for (int i = 0; i<1000000; i++)
-            list.add(i);
+//        for (int i = 0; i<1000000; i++)
+//            list.add(i);
 
-//        list.add(1);
-//        list.add(2);
-//        list.add(3);
-//        list.add(4);
-//        list.add(5);
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        list.add(4);
+        list.add(5);
 
         DoublyLinkedList reverseList = new DoublyLinkedList();
 
-        for (int i = 1000000; i>=0; i--)
-            list.add(i);
+//        for (int i = 999999; i>-1; i--)
+//            reverseList.add(i);
 
-//        reverseList.add(5);
-//        reverseList.add(4);
-//        reverseList.add(3);
-//        reverseList.add(2);
-//        reverseList.add(1);
-//        reverseList.add(1);
+        reverseList.add(5);
+        reverseList.add(4);
+        reverseList.add(3);
+        reverseList.add(2);
+        reverseList.add(1);
 
         long startTime = System.nanoTime();
 
@@ -81,6 +78,7 @@ public class DoublyLinkedList {
 
         long stopTime = System.nanoTime();
 
-        System.out.println(stopTime - startTime + " Nano seconds.");
+        long microSeconds = TimeUnit.NANOSECONDS.toMicros(stopTime - startTime);
+        System.out.println(microSeconds + " Micro seconds.");
     }
 }
