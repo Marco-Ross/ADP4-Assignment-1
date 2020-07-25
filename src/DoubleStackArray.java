@@ -1,3 +1,5 @@
+import java.util.concurrent.TimeUnit;
+
 public class DoubleStackArray {
     private int[] Arr;
     private int top = -1;
@@ -59,7 +61,7 @@ public class DoubleStackArray {
     }
 
     public static void main(String[] args) {
-
+        long startTime = System.nanoTime(); //Start timer
         DoubleStackArray doubleStackArray = new DoubleStackArray(10);
 
         //Stack 1 from the front of array
@@ -76,7 +78,13 @@ public class DoubleStackArray {
         doubleStackArray.pushStackTwo(10);
         doubleStackArray.pushStackTwo(12);
 
-        System.out.println("First stack " + doubleStackArray.popStackOne());
-        System.out.println("Second stack " + doubleStackArray.popStackTwo());
+        System.out.println("First stack (value popped off) " + doubleStackArray.popStackOne());
+        System.out.println("Second stack (value popped off) " + doubleStackArray.popStackTwo());
+        System.out.println();
+
+        long stopTime = System.nanoTime();
+
+        long microSeconds = TimeUnit.NANOSECONDS.toMicros(stopTime - startTime);
+        System.out.println(microSeconds + " Micro seconds."); //Display time
     }
 }

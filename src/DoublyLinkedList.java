@@ -72,6 +72,8 @@ public class DoublyLinkedList {
         else
             System.out.println("Is Not Match");
 
+        System.out.println();
+
         long stopTime = System.nanoTime();
 
         long microSeconds = TimeUnit.NANOSECONDS.toMicros(stopTime - startTime);
