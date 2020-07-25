@@ -80,6 +80,5 @@ public class DoublyLinkedList {
 
         long microSeconds = TimeUnit.NANOSECONDS.toMicros(stopTime - startTime);
         System.out.println(microSeconds + " Micro seconds.");
-        //change
     }
 }
